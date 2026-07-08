@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>용디쌤 | 느려도 괜찮아요, 방향은 제가 잡아드릴게요</title>
+<meta name="description" content="언어재활사 17년 용디쌤(나용운). 불안이 막 시작된 부모님 곁에서 오늘 할 한 가지를 함께 찾습니다.">
+<meta name="theme-color" content="#6DBE8A">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css">
+<style>
+:root{
+  --primary:#6DBE8A; --primary-deep:#2E7D54; --primary-2:#A8DCC0;
+  --bg:#FAF7F0; --surface:#FFFFFF;
+  --ink:#2E5D44; --ink2:#6B7A70;
+  --accent:#F2845C; --line:#ECE5D8;
+  --sans:'Pretendard',system-ui,sans-serif;
+  --shadow:0 6px 20px rgba(46,93,68,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.7;word-break:keep-all}
+h1,h2,h3{font-weight:800;letter-spacing:-1px;color:var(--ink);margin:0 0 .4em}
+h1{font-size:40px;line-height:1.25} h2{font-size:28px;line-height:1.3} h3{font-size:20px;line-height:1.4}
+p{margin:0 0 1em}
+a{color:var(--primary-deep)}
+.wrap{max-width:960px;margin:0 auto;padding:64px 24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:24px}
+.btn{display:inline-block;background:var(--primary-deep);color:#fff;border:none;border-radius:999px;
+     padding:14px 24px;font-family:var(--sans);font-size:16px;font-weight:700;text-decoration:none;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--primary-deep);border:1px solid var(--primary)}
+.tag{display:inline-block;background:var(--primary-2);color:var(--ink);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600}
+.accent{color:var(--accent)}            /* 포인트 — 화면당 한 곳 */
+.wordmark{display:inline-flex;align-items:center;gap:9px;color:var(--primary-deep);text-decoration:none}
+.wordmark b{font-size:22px;font-weight:800;letter-spacing:-1px}
+.eyebrow{display:inline-block;font-size:14px;font-weight:700;color:var(--primary-deep);background:var(--primary-2);border-radius:999px;padding:5px 14px;margin-bottom:18px}
+.muted{color:var(--ink2)}
+.small{font-size:13px;line-height:1.5}
+
+/* 헤더 */
+header{position:sticky;top:0;background:rgba(250,247,240,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+header .bar{max-width:960px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav{display:flex;gap:20px;align-items:center}
+nav a{font-size:15px;font-weight:600;text-decoration:none;color:var(--ink)}
+nav a.cta{color:var(--primary-deep)}
+
+/* 히어로 */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center;padding-top:72px;padding-bottom:72px}
+.hero .sub{font-size:18px;color:var(--ink2);margin:18px 0 28px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hero .aside-link{font-size:15px;font-weight:600}
+/* TODO(사진): 확장 시 .hero-visual을 실사진으로 교체 */
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.hero-visual .circle{width:min(280px,60vw);aspect-ratio:1;border-radius:50%;background:var(--primary-2);
+  display:flex;align-items:center;justify-content:center;color:var(--primary-deep)}
+.hero-visual svg{width:56%;height:56%}
+
+/* 스토리 */
+.story{max-width:680px}
+.story .lead{font-size:19px;font-weight:700}
+.pullquote{border-left:4px solid var(--primary);padding:6px 0 6px 20px;margin:28px 0;font-size:19px;font-weight:700;color:var(--primary-deep)}
+
+/* 증거 */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.stats .num{font-size:34px;font-weight:800;letter-spacing:-1px;color:var(--primary-deep);line-height:1.2}
+.stats .label{font-size:14px;color:var(--ink2);margin-top:4px}
+
+/* 카드 그리드 */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.grid3 .card{display:flex;flex-direction:column;gap:10px}
+.grid3 .card p{flex:1;margin:0;color:var(--ink2);font-size:15px}
+.grid3 .card .go{font-weight:700;font-size:15px;text-decoration:none}
+
+/* 노트 */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.notes .card{text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:12px}
+.notes .card .tag{align-self:flex-start}
+.notes .card h3{margin:0}
+.notes .card p{margin:0;color:var(--ink2);font-size:15px;flex:1}
+
+/* 구독 밴드 */
+.subscribe{background:var(--primary-deep);color:#fff}
+.subscribe .wrap{padding-top:72px;padding-bottom:72px;text-align:center}
+.subscribe h2{color:#fff}
+.subscribe p{color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 28px}
+.subscribe form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.subscribe input{border:none;border-radius:999px;padding:14px 22px;font-family:var(--sans);font-size:16px;min-width:260px}
+.subscribe .btn{background:#fff;color:var(--primary-deep)}
+.subscribe .small{color:rgba(255,255,255,.6);margin-top:16px}
+.subscribe .small.ok{color:#fff;font-weight:700}
+.subscribe .small.err{color:#FFD9C7;font-weight:700}
+
+/* 푸터 */
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:48px;padding-bottom:48px}
+footer .links{display:flex;flex-direction:column;gap:6px;font-size:15px}
+footer a{text-decoration:none}
+
+@media (max-width:720px){
+  h1{font-size:30px} h2{font-size:24px}
+  .wrap{padding:48px 20px}
+  .hero{grid-template-columns:1fr;padding-top:48px;text-align:left}
+  .hero-visual{order:-1;justify-content:flex-start}
+  .hero-visual .circle{width:120px}
+  .hero-visual svg{width:60%;height:60%}
+  .stats{grid-template-columns:1fr}
+  .stats .num{font-size:26px}
+  .grid3,.notes{grid-template-columns:1fr}
+  nav a:not(.cta){display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="wordmark" href="#top" aria-label="용디쌤 홈">
+      <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M16 12h32a8 8 0 0 1 8 8v17a8 8 0 0 1-8 8H33l-11 9 1.2-9H16a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8Z" stroke="currentColor" stroke-width="3.2" fill="none" stroke-linejoin="round"/>
+        <path d="M32 38V26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 30c-3.6 0-6.4-2.8-6.4-6.4 3.6 0 6.4 2.8 6.4 6.4Z" fill="currentColor"/>
+        <path d="M32 32c3.6 0 6.4-2.8 6.4-6.4-3.6 0-6.4 2.8-6.4 6.4Z" fill="currentColor"/>
+      </svg>
+      <b>용디쌤</b>
+    </a>
+    <nav>
+      <a href="#story">이야기</a>
+      <a href="#work">하는 일</a>
+      <a href="#notes">노트</a>
+      <a class="cta" href="#subscribe">소식받기 🌱</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- §1 히어로 -->
+  <section class="wrap hero">
+    <div>
+      <span class="eyebrow">언어재활사 17년 · 아동발달 코치</span>
+      <h1>느려도 괜찮아요.<br>방향은 제가 잡아드릴게요.</h1>
+      <p class="sub">"우리 아이가 느린가?" 불안이 막 시작된 그 자리에,<br>
+      17년의 방향과 <b class="accent">오늘 할 한 가지</b>가 있습니다.</p>
+      <div class="actions">
+        <a class="btn" href="#subscribe">오늘 할 한 가지 받아보기</a>
+        <a class="aside-link" href="https://talkbloom.org" target="_blank" rel="noopener">아이 발달이 궁금하다면 → TalkBloom 무료 발달체크</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="circle">
+        <svg viewBox="0 0 64 64" fill="none">
+          <path d="M16 12h32a8 8 0 0 1 8 8v17a8 8 0 0 1-8 8H33l-11 9 1.2-9H16a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8Z" stroke="currentColor" stroke-width="3.2" fill="none" stroke-linejoin="round"/>
+          <path d="M32 38V26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 30c-3.6 0-6.4-2.8-6.4-6.4 3.6 0 6.4 2.8 6.4 6.4Z" fill="currentColor"/>
+          <path d="M32 32c3.6 0 6.4-2.8 6.4-6.4-3.6 0-6.4 2.8-6.4 6.4Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- §2 스토리 -->
+  <section class="wrap" id="story">
+    <div class="story">
+      <span class="tag">나의 이야기</span>
+      <h2 style="margin-top:14px">원래 저는 드럼을 치고<br>노래를 하고 싶었습니다.</h2>
+      <p class="lead" style="margin-top:18px">그 꿈은 사라지지 않고 모양을 바꿨어요 — 아이의 목소리가 제때 피어나게 돕는 일로. 소리와 리듬과 목소리는 결국 하나로 연결되어 있으니까요.</p>
+      <p>"남자가 무슨 언어치료를 하냐"는 말을 들으며 시작한 길, 17년이 지났습니다. 그동안 배운 건 하나예요. 아이의 성장이 멈추는 건 남과 비교당할 때가 아니라, 그 비교를 부모가 스스로 믿어버릴 때라는 것.</p>
+      <p>그래서 저는 겁주지 않습니다. 평가하지 않습니다. 빨리 고쳐드린다고 약속하지도 않아요. 말은 약처럼 즉시 처치되는 게 아니니까요. 대신 방향을 잡아드리고, 오늘 집에서 할 수 있는 작은 한 걸음을 같이 찾습니다.</p>
+      <div class="pullquote">아이의 말은, 믿고 기다려 준 만큼<br>반드시 피어납니다.</div>
+      <!-- TODO(사진): 확장 시 이 자리에 임상/일상 스냅 1장 -->
+    </div>
+  </section>
+
+  <!-- §3 증거 -->
+  <section class="wrap">
+    <span class="tag">17년의 기록</span>
+    <h2 style="margin-top:14px">곁에서 지켜본 시간</h2>
+    <div class="stats">
+      <div class="card">
+        <div class="num">17년</div>
+        <div class="label">언어재활 임상</div>
+      </div>
+      <div class="card">
+        <div class="num">아동발달 · 학령기</div>
+        <div class="label">전문 분야</div>
+      </div>
+      <div class="card">
+        <div class="num">집필 중</div>
+        <div class="label">17년 임상을 담은 책</div>
+      </div>
+    </div>
+    <!-- TODO(증거): 자격·학위·경력기관·강연/기고 이력 확인되면 리스트 추가 -->
+  </section>
+
+  <!-- §4 만들고 있는 것들 -->
+  <section class="wrap" id="work">
+    <span class="tag">만들고 있는 것들</span>
+    <h2 style="margin-top:14px">곁에 있겠다는 말을, 도구로 만듭니다</h2>
+    <div class="grid3">
+      <div class="card">
+        <h3>TalkBloom</h3>
+        <p>발달 선별 + 가정 코칭 웹 서비스. 결과만 알려주고 끝나지 않는 발달체크 — 오늘 할 한 가지까지 함께 찾아드려요.</p>
+        <a class="go" href="https://talkbloom.org" target="_blank" rel="noopener">무료 발달체크 해보기 →</a>
+      </div>
+      <div class="card">
+        <h3>말이 피는 시간</h3>
+        <p>하루 1분, 오늘 할 한 가지. 쇼츠와 칼럼으로 부모님 곁에 조금씩 놓아두는 이야기들입니다.</p>
+        <a class="go" href="#notes">노트 둘러보기 →</a>
+      </div>
+      <div class="card">
+        <h3>책을 쓰고 있어요</h3>
+        <p>17년 임상에서 배운 '믿고 기다리는 법'을 한 권에 담는 중입니다. 소식을 가장 먼저 전해드릴게요.</p>
+        <a class="go" href="#subscribe">출간 소식 받기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 노트 -->
+  <section class="wrap" id="notes">
+    <span class="tag">말이 피는 시간</span>
+    <h2 style="margin-top:14px">용디쌤의 오늘의 한 걸음</h2>
+    <div class="notes">
+      <!-- TODO(노트): 글 발행 시 실제 링크 연결. 카테고리 = 콘텐츠 기둥 4개 고정 -->
+      <a class="card" href="#" aria-disabled="true">
+        <span class="tag">조급함 대신 기다림</span>
+        <h3>재촉할수록 말문이 닫히는 이유</h3>
+        <p>빨리 시켜보고 싶은 마음, 당연해요. 그런데 아이 입장에서는 어떤 일이 벌어질까요.</p>
+      </a>
+      <a class="card" href="#" aria-disabled="true">
+        <span class="tag">오늘 할 한 가지</span>
+        <h3>밥상에서 하는 말 놀이 하나</h3>
+        <p>준비물도, 교구도 필요 없어요. 오늘 저녁 밥상에서 딱 한 번 해보세요.</p>
+      </a>
+      <a class="card" href="#" aria-disabled="true">
+        <span class="tag">비교의 함정</span>
+        <h3>"옆집 애는" — 이 말이 위험한 이유</h3>
+        <p>비교는 아이보다 부모의 마음을 먼저 무너뜨립니다. 우리 아이의 속도를 지키는 법.</p>
+      </a>
+    </div>
+    <p class="muted small" style="margin-top:18px">새 글이 준비되는 대로 이곳에 하나씩 놓아둘게요 🌱</p>
+  </section>
+
+  <!-- §6 구독 -->
+  <section class="subscribe" id="subscribe">
+    <div class="wrap">
+      <h2>일주일에 한 번,<br>'오늘 할 한 가지'를 보내드려요</h2>
+      <p>혼자 검색하며 불안해하지 않아도 돼요. 집에서 바로 해볼 수 있는 작은 한 걸음과, 준비 중인 책 소식을 가장 먼저 전해드릴게요.</p>
+      <form id="subForm">
+        <input type="email" name="email" placeholder="이메일 주소" required aria-label="이메일 주소">
+        <button class="btn" type="submit" id="subBtn">받아볼게요 🌱</button>
+      </form>
+      <p class="small" id="subMsg" role="status">신청하신 이메일은 소식 전달 외에는 사용하지 않아요. 언제든 한 번의 클릭으로 그만 받을 수 있습니다.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- §7 푸터 -->
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="wordmark">
+        <svg width="26" height="26" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M16 12h32a8 8 0 0 1 8 8v17a8 8 0 0 1-8 8H33l-11 9 1.2-9H16a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8Z" stroke="currentColor" stroke-width="3.2" fill="none" stroke-linejoin="round"/>
+          <path d="M32 38V26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 30c-3.6 0-6.4-2.8-6.4-6.4 3.6 0 6.4 2.8 6.4 6.4Z" fill="currentColor"/>
+          <path d="M32 32c3.6 0 6.4-2.8 6.4-6.4-3.6 0-6.4 2.8-6.4 6.4Z" fill="currentColor"/>
+        </svg>
+        <b>용디쌤</b>
+      </span>
+      <p class="muted small" style="margin-top:12px;max-width:420px">
+        이 페이지의 내용은 일반적인 발달 정보이며, 개별 아동에 대한 진단이나 치료를 대신하지 않습니다.
+        아이에 대한 걱정이 있다면 전문기관의 평가를 받아보시길 권해요.
+      </p>
+      <p class="muted small">© 2026 용디쌤 · 나용운</p>
+    </div>
+    <div class="links">
+      <b>강연 · 기고 · 자문 문의를 환영합니다</b>
+      <a href="mailto:skdyddns@gmail.com">skdyddns@gmail.com</a>
+      <a href="https://talkbloom.org" target="_blank" rel="noopener">TalkBloom</a>
+      <!-- TODO(SNS): 유튜브·인스타그램 실제 URL 연결 -->
+      <a href="#" aria-disabled="true">YouTube (준비 중)</a>
+      <a href="#" aria-disabled="true">Instagram (준비 중)</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== 구독폼 =====
+ * ENDPOINT에 Google Apps Script 웹 앱 URL을 넣으면 스프레드시트로 수집됩니다.
+ * 설치 방법: backend/SETUP.md (5분). 비어 있으면 메일 작성(mailto)으로 대신 접수.
+ */
+const ENDPOINT = "";
+
+const subForm = document.getElementById('subForm');
+const subMsg = document.getElementById('subMsg');
+const subBtn = document.getElementById('subBtn');
+const subMsgDefault = subMsg.textContent;
+
+subForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = subForm.email.value.trim();
+  if (!email) return;
+
+  if (!ENDPOINT) {
+    location.href = 'mailto:skdyddns@gmail.com?subject=' +
+      encodeURIComponent('[구독 신청] 오늘 할 한 가지') +
+      '&body=' + encodeURIComponent('구독할 이메일: ' + email);
+    return;
+  }
+
+  subBtn.disabled = true;
+  subBtn.textContent = '신청 중...';
+  subMsg.className = 'small';
+  try {
+    /* Apps Script는 CORS preflight를 처리하지 못하므로 text/plain 단순 요청으로 전송 */
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ email, submittedAt: new Date().toISOString() })
+    });
+    if (!res.ok) throw new Error('server');
+    const out = await res.json().catch(() => ({}));
+    if (out.ok === false) throw new Error(out.error || 'server');
+    subForm.reset();
+    subMsg.textContent = '🌱 신청 완료! 다음 소식부터 받아보실 수 있어요.';
+    subMsg.classList.add('ok');
+  } catch {
+    subMsg.textContent = '일시적인 오류가 있었어요. 잠시 후 다시 시도해 주세요.';
+    subMsg.classList.add('err');
+  } finally {
+    subBtn.disabled = false;
+    subBtn.textContent = '받아볼게요 🌱';
+    setTimeout(() => { subMsg.className = 'small'; subMsg.textContent = subMsgDefault; }, 6000);
+  }
+});
+</script>
+</body>
+</html>
