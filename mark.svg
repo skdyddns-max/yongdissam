@@ -1,0 +1,9 @@
+<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="용디쌤">
+  <!-- 말풍선 (talk) -->
+  <path d="M16 12h32a8 8 0 0 1 8 8v17a8 8 0 0 1-8 8H33l-11 9 1.2-9H16a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8Z"
+        stroke="#2E7D54" stroke-width="3.2" fill="none" stroke-linejoin="round"/>
+  <!-- 새싹 (bloom): 줄기 + 두 잎 -->
+  <path d="M32 38V26" stroke="#2E7D54" stroke-width="3" stroke-linecap="round"/>
+  <path d="M32 30c-3.6 0-6.4-2.8-6.4-6.4 3.6 0 6.4 2.8 6.4 6.4Z" fill="#2E7D54"/>
+  <path d="M32 32c3.6 0 6.4-2.8 6.4-6.4-3.6 0-6.4 2.8-6.4 6.4Z" fill="#2E7D54"/>
+</svg>
